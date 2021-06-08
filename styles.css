@@ -1,8 +1,12 @@
-h2 {
-    color: wheat;
+h3 {
+    color:lightsteelblue;
 }
 
+h4 {
+    color:indianred;
+}
 body {
     font-size: large;
-    font-family: cursive;
+    font-family: arial;
+    color:lightsalmon;
 }
