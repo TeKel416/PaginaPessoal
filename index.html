@@ -35,6 +35,8 @@
                 color: olivedrab;
             }
         </style>
+
+        <script src="tamanhotitulo.js"></script>
     </head>
 
     <body>
@@ -43,14 +45,11 @@
             <h1 div id="início">Minha Página Pessoal</h1>
             <h2><address>maria123duarda@gmail.com</address></h2> 
         </header>
-
-        <button>Dark Mode</button>
-        <script>
-            function escurecer(){
-                document.querySelector('body').style.color = "black";
-            }
-            document.querySelector('button').addEventListener('click', escurecer)
-        </script>
+        
+        <div>
+            <button onclick="mudartamanho('70')">+</button>
+            <button onclick="mudartamanho('20')">-</button>
+        </div>
 
         <p>Este é o repositório de <b>Maria Eduarda de Souza Barros</b>.</p>
         <hr>
