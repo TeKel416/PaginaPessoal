@@ -1,13 +1,36 @@
-const ordem = 3;
-const matriz = Array(ordem);
-for (let i=0; i<matriz.length; i++) {
-    matriz[i] = Array(ordem);
-}
-const somaNumeros = 15;
+let ordem = 0;
+let matriz = [];
+let somaNumeros = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    insereTabela();
+    iniciaAe();
 });
+
+function iniciaAe() {
+    const div = document.createElement('div');
+    document.body.append(div);
+
+    const textoInicio = document.createElement('p');
+    textoInicio.classList.add('textoinicio');
+    textoInicio.innerText = "Em uma escala de 1 a infinito, o quão você é bom?"
+    div.append(textoInicio);
+
+    const input = document.createElement('input');
+    input.classList.add('ordem');
+    div.append(input)
+
+    input.addEventListener('change', () => {
+        ordem = parseInt(input.value);
+        matriz = Array(ordem)
+        for (let i=0; i<matriz.length; i++) {
+            matriz[i] = Array(ordem);
+        }
+        somaNumeros = (ordem + ordem**3)/2;
+        textoInicio.remove();
+        input.remove();
+        insereTabela();
+    });
+}
 
 function insereTabela() {
     const tabela = document.createElement('table');
@@ -40,11 +63,36 @@ function insereInput(celula) {
         const quadradroCompleto = verificaMatriz();
         if (quadradroCompleto) {
             document.querySelector('#quadradomagico').classList.add('vitoria');
-        } else {
-            document.querySelector('#quadradomagico').classList.remove('vitoria');
+            document.querySelectorAll('input').forEach(input => {
+                input.readOnly = true;
+            })
+            criaTextoParabens();
+            criaBotaoReinicia();
         }
     });
 }
+
+function criaTextoParabens() {
+    const parabens = document.createElement('p');
+    parabens.innerText = "Parabéns :D Vamos jogar de novo? :)"
+    document.body.append(parabens);
+}
+
+function criaBotaoReinicia() {
+    const botaoReinicia = document.createElement('button');
+    botaoReinicia.innerText = "Reiniciar"
+    document.body.append(botaoReinicia);
+    botaoReinicia.addEventListener('click', () => {
+        const tabela = document.querySelector('#quadradomagico');
+        const parabens = document.querySelector('p');
+        tabela.remove();
+        parabens.remove();
+        botaoReinicia.remove();
+        iniciaAe();
+    })
+}
+
+
 
 function verificaMatriz() {
     const numerosRepetidos = verificaNumerosRepetidos();

@@ -19,6 +19,18 @@ input {
     font-size: larger;
 }
 
+.ordem {
+    border: solid 1px;
+    border-color: grey;
+}
+
+.textoinicio {
+    text-align: center;
+    color: black;
+    font-size: 1.1em;
+    font-family: 'Comic Sans';
+}
+
 .somaerradacoluna input,
 .somaerradalinha input,
 .somaerradadiagonalsecundaria input, 
